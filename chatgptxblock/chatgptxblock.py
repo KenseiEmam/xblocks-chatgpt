@@ -1,7 +1,9 @@
 import json
 import requests
 import pkg_resources
-import openai
+from openai import OpenAI
+
+
 from xblock.core import XBlock
 from xblock.fields import Integer, String, Scope
 from xblock.fragment import Fragment
@@ -92,8 +94,10 @@ class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
 
         # Send the user's question to the text-davinci-002 model using the OpenAI API
         model = "text-davinci-003"
-        openai.api_key = self.api_key
-        response = openai.Completion.create(
+        client = OpenAI(
+  api_key=self.api_key
+)
+        response = client.completions.create(
             engine=model,
             prompt=prompt,
             max_tokens=150,
