@@ -95,8 +95,8 @@ class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
         # Send the user's question to the text-davinci-002 model using the OpenAI API
         model = "text-davinci-003"
         client = OpenAI(
-  api_key=self.api_key
-)
+        api_key=self.api_key
+        )
         response = client.completions.create(
             engine=model,
             prompt=prompt,
