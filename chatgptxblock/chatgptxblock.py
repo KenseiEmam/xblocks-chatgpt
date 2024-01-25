@@ -98,7 +98,7 @@ class ChatgptXBlock(StudioEditableXBlockMixin, XBlock):
         api_key=self.api_key
         )
         response = client.completions.create(
-            engine=model,
+            model = "text-davinci-003",
             prompt=prompt,
             max_tokens=150,
             n=1,
